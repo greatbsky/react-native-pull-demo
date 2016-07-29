@@ -7,7 +7,7 @@ import {
   ActivityIndicator
 } from 'react-native';
 
-import PullView from 'react-native-pullview';
+import {PullView} from 'react-native-pullview';
 
 export default class extends Component {
 
