@@ -7,7 +7,7 @@ import {
   ListView,
 } from 'react-native';
 
-import {PullList} from './react-native-pullview';
+import {PullList} from 'react-native-pullview';
 
 export default class extends Component {
 
