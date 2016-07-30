@@ -3,10 +3,11 @@ import {
   StyleSheet,
   Text,
   View,
-  ActivityIndicator
+  ActivityIndicator,
+  Dimensions
 } from 'react-native';
 
-import {PullView} from 'react-native-pullview';
+import {PullView} from 'react-native-pull';
 
 export default class extends Component {
 
@@ -35,8 +36,8 @@ export default class extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-		<PullView onPullRelease={this.onPullRelease} topIndicatorRender={this.topIndicatorRender} topIndicatorHeight={60}>
+      <View style={[styles.container]}>
+		<PullView style={{width: Dimensions.get('window').width}} onPullRelease={this.onPullRelease} topIndicatorRender={this.topIndicatorRender} topIndicatorHeight={60}>
 			<View style={{backgroundColor: '#eeeeee'}}>
                 <Text>1</Text>
                 <Text>2</Text>

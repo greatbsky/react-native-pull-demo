@@ -7,7 +7,7 @@ import {
   ListView,
 } from 'react-native';
 
-import {PullList} from 'react-native-pullview';
+import {PullList} from 'react-native-pull';
 
 export default class extends Component {
 
@@ -47,6 +47,7 @@ export default class extends Component {
         return (
           <View style={styles.container}>
               <PullList
+                  style={{}}
                   onPullRelease={this.onPullRelease} topIndicatorRender={this.topIndicatorRender} topIndicatorHeight={60}
                   renderHeader={this.renderHeader}
                   dataSource={this.state.list}
@@ -63,7 +64,7 @@ export default class extends Component {
 
     renderHeader() {
       return (
-          <View style={{flex:1, height: 50, backgroundColor: '#eeeeee', alignItems: 'center', justifyContent: 'center'}}>
+          <View style={{height: 50, backgroundColor: '#eeeeee', alignItems: 'center', justifyContent: 'center'}}>
               <Text style={{fontWeight: 'bold'}}>This is header</Text>
           </View>
       );
@@ -82,7 +83,9 @@ export default class extends Component {
           return null;
       }
       return (
-        <ActivityIndicator />
+          <View style={{height: 100}}>
+              <ActivityIndicator />
+          </View>
       );
     }
 
