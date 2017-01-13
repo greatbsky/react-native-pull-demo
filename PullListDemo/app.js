@@ -35,7 +35,7 @@ export default class extends Component {
     }
 
 	topIndicatorRender(pulling, pullok, pullrelease) {
-		return <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: 60}}>
+		return <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: 60}}>
 		  <ActivityIndicator size="small" color="gray" />
 		  {pulling ? <Text>当前PullList状态: pulling...</Text> : null}
 		  {pullok ? <Text>当前PullList状态: pullok......</Text> : null}
