@@ -24,6 +24,7 @@ export default class extends Component {
         this.renderRow = this.renderRow.bind(this);
         this.renderFooter = this.renderFooter.bind(this);
         this.loadMore = this.loadMore.bind(this);
+        this.topIndicatorRender = this.topIndicatorRender.bind(this);
         // this.loadMore();
     }
 
@@ -35,12 +36,29 @@ export default class extends Component {
     }
 
 	topIndicatorRender(pulling, pullok, pullrelease) {
-		return <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: 60}}>
-		  <ActivityIndicator size="small" color="gray" />
-		  {pulling ? <Text>当前PullList状态: pulling...</Text> : null}
-		  {pullok ? <Text>当前PullList状态: pullok......</Text> : null}
-		  {pullrelease ? <Text>当前PullList状态: pullrelease......</Text> : null}
-		</View>;
+        const hide = {position: 'absolute', left: -10000};
+        const show = {position: 'relative', left: 0};
+        if (pulling) {
+            this.txtPulling && this.txtPulling.setNativeProps({style: show});
+            this.txtPullok && this.txtPullok.setNativeProps({style: hide});
+            this.txtPullrelease && this.txtPullrelease.setNativeProps({style: hide});
+        } else if (pullok) {
+            this.txtPulling && this.txtPulling.setNativeProps({style: hide});
+            this.txtPullok && this.txtPullok.setNativeProps({style: show});
+            this.txtPullrelease && this.txtPullrelease.setNativeProps({style: hide});
+        } else if (pullrelease) {
+            this.txtPulling && this.txtPulling.setNativeProps({style: hide});
+            this.txtPullok && this.txtPullok.setNativeProps({style: hide});
+            this.txtPullrelease && this.txtPullrelease.setNativeProps({style: show});
+        }
+		return (
+            <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: 60}}>
+                <ActivityIndicator size="small" color="gray" />
+                <Text ref={(c) => {this.txtPulling = c;}}>当前PullList状态: pulling...</Text>
+                <Text ref={(c) => {this.txtPullok = c;}}>当前PullList状态: pullok......</Text>
+                <Text ref={(c) => {this.txtPullrelease = c;}}>当前PullList状态: pullrelease......</Text>
+    		</View>
+        );
 	}
 
     render() {
