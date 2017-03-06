@@ -38,19 +38,21 @@ export default class extends Component {
 	topIndicatorRender(pulling, pullok, pullrelease) {
         const hide = {position: 'absolute', left: -10000};
         const show = {position: 'relative', left: 0};
-        if (pulling) {
-            this.txtPulling && this.txtPulling.setNativeProps({style: show});
-            this.txtPullok && this.txtPullok.setNativeProps({style: hide});
-            this.txtPullrelease && this.txtPullrelease.setNativeProps({style: hide});
-        } else if (pullok) {
-            this.txtPulling && this.txtPulling.setNativeProps({style: hide});
-            this.txtPullok && this.txtPullok.setNativeProps({style: show});
-            this.txtPullrelease && this.txtPullrelease.setNativeProps({style: hide});
-        } else if (pullrelease) {
-            this.txtPulling && this.txtPulling.setNativeProps({style: hide});
-            this.txtPullok && this.txtPullok.setNativeProps({style: hide});
-            this.txtPullrelease && this.txtPullrelease.setNativeProps({style: show});
-        }
+        setTimeout(() => {
+            if (pulling) {
+                this.txtPulling && this.txtPulling.setNativeProps({style: show});
+                this.txtPullok && this.txtPullok.setNativeProps({style: hide});
+                this.txtPullrelease && this.txtPullrelease.setNativeProps({style: hide});
+            } else if (pullok) {
+                this.txtPulling && this.txtPulling.setNativeProps({style: hide});
+                this.txtPullok && this.txtPullok.setNativeProps({style: show});
+                this.txtPullrelease && this.txtPullrelease.setNativeProps({style: hide});
+            } else if (pullrelease) {
+                this.txtPulling && this.txtPulling.setNativeProps({style: hide});
+                this.txtPullok && this.txtPullok.setNativeProps({style: hide});
+                this.txtPullrelease && this.txtPullrelease.setNativeProps({style: show});
+            }
+        }, 1);
 		return (
             <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: 60}}>
                 <ActivityIndicator size="small" color="gray" />
